@@ -1,4 +1,4 @@
-@Library('shared-library')
+@Library('global-pipeline-libraries')
 import com.gpsl.handlers.validateApproval
 def validateApproval = new validateApproval()
 
