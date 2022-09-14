@@ -1,3 +1,7 @@
+@Library('shared-library')
+import com.gpsl.handlers.validateApproval
+def validateApproval = new validateApproval()
+
 pipeline {
     agent {
         docker {
@@ -6,6 +10,14 @@ pipeline {
         }
     }
     stages {
+        stage ('Build Approval') {
+            when {
+                expression { validateApproval.isBuildUatApproved() }
+            }
+            steps {
+                echo "The build has been approved!!!"
+            }
+        }
         stage('Build') {
             steps {
                 sh 'mvn -X -B -DskipTests clean package'
