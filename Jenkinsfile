@@ -1,4 +1,4 @@
-@Library('global-pipeline-libraries')_
+@Library('global-pipeline-libraries')
 import com.gpsl.GlobalVars
 
 pipeline {
@@ -12,7 +12,7 @@ pipeline {
         stage ('Health Check') {
             steps {
                 healthCheck 'health status'
-                println GlobalVars.foo
+                echo GlobalVars.foo
                 echo "Health Check Complete!!!"
             }
         }
