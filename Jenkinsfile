@@ -10,9 +10,9 @@ pipeline {
     }
     stages {
         stage ('Health Check') {
-            healthCheck 'health status'
-            println GlobalVars.foo
             steps {
+                healthCheck 'health status'
+                println GlobalVars.foo
                 echo "Health Check Complete!!!"
             }
         }
