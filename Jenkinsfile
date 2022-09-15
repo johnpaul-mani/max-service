@@ -12,7 +12,7 @@ pipeline {
         stage ('Health Check') {
             steps {
                 healthCheck 'health status'
-                echo GlobalVars.foo
+                echo GlobalVars.status
                 echo "Health Check Complete!!!"
             }
         }
