@@ -1,6 +1,5 @@
-@Library('global-pipeline-libraries')
-import com.gpsl.handlers.validateApproval
-def validateApproval = new validateApproval()
+@Library('global-pipeline-libraries')_
+import com.gpsl.GlobalVars
 
 pipeline {
     agent {
@@ -10,12 +9,11 @@ pipeline {
         }
     }
     stages {
-        stage ('Build Approval') {
-            when {
-                expression { validateApproval.isBuildUatApproved() }
-            }
+        stage ('Health Check') {
+            healthCheck 'health status'
+            println GlobalVars.foo
             steps {
-                echo "The build has been approved!!!"
+                echo "Health Check Complete!!!"
             }
         }
         stage('Build') {
